@@ -62,30 +62,40 @@ PRIVATEs
 User model
  
 ```
-username: String
-password: String
-email: String
-comment: reference to comment-object-id-object
+email: String, required, unique
+password: String, required
 ```
 
-Comment model
+Setlist model
+```
+name: String, required, unique
+user: [Object_id ref: user_id]
+songs: [Object_id ref: songs_id]
+```
+Song model
+```
+name: String, required
+songs: [Object_id ref: songs_id]
+BPM: Number, required
+Notes: String
+```
 
 ## Links
 
 ### Trello/Kanban
 
-[Link to our Kanban board](https://github.com/ignazka/Collective-Choice/projects/1)
+[Link to our Kanban board]()
 
 ### Git
 
 The url to your repository and to your deployed project
 
-[Repository Link](https://github.com/ignazka/Collective-Choice/)
+[Repository Link]()
 
-[Deploy Link](https://collective-choice.herokuapp.com/)
+[Deploy Link]()
 
 ### Slides
 
 The url to your presentation slides
 
-[Presentation Link](https://docs.google.com/presentation/d/172qhJvnk4zBE8IvQfn9HmVzQ8Jmnw8Tmc4jCkHYCPIw/edit?usp=sharing)
+[Presentation Link]()
