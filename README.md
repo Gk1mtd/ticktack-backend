@@ -9,3 +9,6 @@ Artists are able to create setlists with BPM next to the song. BPM is editable.
 * Different Click Sounds
 * Tapping function
 * Maybe a Tuner
+
+* Routes
+* Modells
