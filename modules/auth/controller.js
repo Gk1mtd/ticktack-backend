@@ -8,6 +8,7 @@ async function signUp(req, res) {
     try {
         // gets user data in req.body
         const {email, password} = req.body
+        console.log(req.body);
         // checks for missing data
         if (!email || !password) {
             return res.status(400).json({message: "Password and email are required!"})
@@ -50,7 +51,7 @@ async function login(req, res) {
             return res.status(400).json({message: "Sorry, wrong password."})
         }
         // creates user in session
-        req.session.user = {email, id:isValidUser.id}
+        req.session.user = {email, id:userExists.id}
         // return session user to client
         return res.status(200).json(req.session.user)
 

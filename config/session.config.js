@@ -10,7 +10,7 @@ function sessionConfiguration(app) {
         secret: SESSION_SECRET,
         resave: false,
         saveUninitialized: true,
-        store: mongoStore({ mongoUrl: MONGO_DB_URL }),
+        store: mongoStore.create({ mongoUrl: MONGO_DB_URL }),
       },
       {
         cookie: {
