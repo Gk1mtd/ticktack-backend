@@ -9,6 +9,7 @@ const connectDB = require("./config/db.config");
 const middlewares = require("./config/middlewares.config");
 const session = require("./config/session.config");
 const authRouter = require("./modules/auth/router");
+const setlistRouter = require("./modules/setlist/router");
 
 // starts the server with all the configurations
 async function start() {
@@ -17,6 +18,7 @@ async function start() {
     middlewares(app);
     session(app);
     authRouter(app);
+    setlistRouter(app);
     app.listen(PORT, () => console.log(`Server is running on Port: ${PORT}`));
   } catch (error) {
     console.error(
