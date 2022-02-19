@@ -4,15 +4,16 @@ const controller = require('./controller');
 const router = require('express').Router();
 
 // takes express instance and checks request and links to the right controller
-function setlistRouter(app) {
+function songRouter(app) {
   // combines routes with controller, via express.router
   router
-    .post('/create-setlist', controller.createSetlist)
-    .put('/update-setlist', controller.updateSetlist)
-    .get("/getall-setlists", controller.getAllSetlists)
-    .delete("/delete-setlist", controller.deleteSetlist)
+    .post('/song', controller.createSong)
+    .put('/song', controller.updateSong)
+    .delete('/song', controller.deleteSong)
+    .get("/song", controller.getSong)
+    .get("/songsAll", controller.getAllSongs)
   // sets baseurl for this auth
   app.use('/api/setlist', router);
 }
 
-module.exports = setlistRouter;
+module.exports = songRouter;

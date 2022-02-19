@@ -32,16 +32,28 @@ async function getAllSetlists(req, res) {
   }
 }
 
-/** updated Setlist */
+/** updates Setlist name */
 async function updateSetlist(req, res) {
-  // updates name of setlist
-    // Setlist.update(name)
-  // updates songs
-    //  push new song to songlist
+  try {
+    const { name, setlistId } = req.body;
+    await Setlist.findByIdAndUpdate(setlistId, {name})
+    return res.status(200).json({message: "Update successfull"})
+  } catch (error) {
+    return res.status(500).json({message: "couldn't update setlist"})
+  }
 }
 
-// delete
-async function deleteSetlist() {}
+/** deletes a setlist */
+async function deleteSetlist(req, res) {
+  try {
+    const { setlistId } = req.body;
+    await Setlist.findByIdAndDelete(setlistId)
+    return res.status(200).json({message: "deleted successfully"})
+  } catch (error) {
+    return res.status(500).json({message: "couldn't delete setlist"})
+
+  }
+}
 
 module.exports = {
   createSetlist,
