@@ -8,7 +8,9 @@ function setlistRouter(app) {
   // combines routes with controller, via express.router
   router
     .post('/create-setlist', controller.createSetlist)
+    .put('/update-setlist', controller.updateSetlist)
     .get("/getall-setlists", controller.getAllSetlists)
+    .delete("/delete-setlist", controller.deleteSetlist)
   // sets baseurl for this auth
   app.use('/api/setlist', router);
 }
