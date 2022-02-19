@@ -54,7 +54,7 @@ async function login(req, res) {
       return res.status(400).json({ message: 'Sorry, wrong password.' });
     }
     // creates user in session
-    req.session.user = { email, id: userExists.id };
+    req.session.user =  {email, id: userExists._id} ;
     // return session user to client
     return res.status(200).json(req.session.user);
   } catch (error) {
