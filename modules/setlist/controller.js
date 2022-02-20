@@ -19,6 +19,21 @@ async function createSetlist(req, res) {
     return res.status(500).json({ message: "Setlist NOT created! Error is: " });
   }
 }
+/** retrieves the setlist by id and returns it */
+async function getSetlist(req, res) {
+  try {
+    // gets the id 
+    const {setlistId} = req.body;
+    console.log("setlist id", setlistId);
+    //populate songs to see all song data
+    const setlist = await Setlist.findById(setlistId).populate('songs')
+    return res.status(200).json(setlist);
+  } catch (error) {
+    return res
+      .status(500)
+      .json({ message: "couldn't retrieve data, sorry :/" });
+  }
+}
 /** retrieves the setlists of the current user and return it */
 async function getAllSetlists(req, res) {
   try {
@@ -55,9 +70,11 @@ async function deleteSetlist(req, res) {
   }
 }
 
+
 module.exports = {
   createSetlist,
   getAllSetlists,
+  getSetlist,
   updateSetlist,
   deleteSetlist,
 };
