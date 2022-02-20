@@ -1,7 +1,6 @@
 // mongoose user model
 const Setlist = require("./setlist.model");
 const User = require("../auth/user.model");
-const res = require("express/lib/response");
 
 /** create new setlist and adds it to the user*/
 async function createSetlist(req, res) {
@@ -22,11 +21,10 @@ async function createSetlist(req, res) {
 /** retrieves the setlist by id and returns it */
 async function getSetlist(req, res) {
   try {
-    // gets the id 
-    const {setlistId} = req.body;
-    console.log("setlist id", setlistId);
+    // gets the id via query
+    const { setlistId } = req.params;
     //populate songs to see all song data
-    const setlist = await Setlist.findById(setlistId).populate('songs')
+    const setlist = await Setlist.findById(setlistId).populate("songs");
     return res.status(200).json(setlist);
   } catch (error) {
     return res
@@ -51,10 +49,10 @@ async function getAllSetlists(req, res) {
 async function updateSetlist(req, res) {
   try {
     const { name, setlistId } = req.body;
-    await Setlist.findByIdAndUpdate(setlistId, {name})
-    return res.status(200).json({message: "Update successfull"})
+    await Setlist.findByIdAndUpdate(setlistId, { name });
+    return res.status(200).json({ message: "Update successfull" });
   } catch (error) {
-    return res.status(500).json({message: "couldn't update setlist"})
+    return res.status(500).json({ message: "couldn't update setlist" });
   }
 }
 
@@ -62,14 +60,12 @@ async function updateSetlist(req, res) {
 async function deleteSetlist(req, res) {
   try {
     const { setlistId } = req.body;
-    await Setlist.findByIdAndDelete(setlistId)
-    return res.status(200).json({message: "deleted successfully"})
+    await Setlist.findByIdAndDelete(setlistId);
+    return res.status(200).json({ message: "deleted successfully" });
   } catch (error) {
-    return res.status(500).json({message: "couldn't delete setlist"})
-
+    return res.status(500).json({ message: "couldn't delete setlist" });
   }
 }
-
 
 module.exports = {
   createSetlist,
