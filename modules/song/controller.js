@@ -5,8 +5,8 @@ const Song = require("./song.model");
 /** create new setlist and adds it to the user*/
 async function createSong(req, res) {
   try {
-    const { setlistId, name, bpm, note } = req.body;
-    const newSong = await Song.create({ name, bpm, note });
+    const { name, setlistId, bpm = 0 } = req.body;
+    const newSong = await Song.create({ name, bpm });
     await Setlist.findByIdAndUpdate(setlistId, {
       $push: { songs: newSong._id },
     });
@@ -52,7 +52,7 @@ async function updateSong(req, res) {
 /** deletes a song and deletes it from the setlist reference as well*/
 async function deleteSong(req, res) {
   try {
-    const { songId, setlistId } = req.body;
+    const { songId, setlistId } = req.params;
     /** deletes song from db */
     await Song.findByIdAndDelete(songId);
     /** find the setlist in which the song is referenced in and removes song from its songs array */

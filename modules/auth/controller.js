@@ -1,7 +1,7 @@
 // encryption module
-const bcrypt = require('bcryptjs');
+const bcrypt = require("bcryptjs");
 // mongoose user model
-const User = require('./user.model');
+const User = require("./user.model");
 
 // signup handling
 async function signUp(req, res) {
@@ -13,12 +13,12 @@ async function signUp(req, res) {
     if (!email || !password) {
       return res
         .status(400)
-        .json({ message: 'Password and email are required!' });
+        .json({ message: "Password and email are required!" });
     }
     // checks for existing user
     const userExists = await User.findOne({ email });
     if (userExists) {
-      return res.status(400).json({ message: 'Email already in use' });
+      return res.status(400).json({ message: "Email already in use" });
     }
     // hashes password
     const salt = await bcrypt.genSalt(10);
@@ -40,21 +40,21 @@ async function login(req, res) {
     if (!email || !password) {
       return res
         .status(400)
-        .json({ message: 'Password and email are required!' });
+        .json({ message: "Password and email are required!" });
     }
     // checks for existing user
     const userExists = await User.findOne({ email });
     if (!userExists) {
-      return res.status(400).json({ message: 'User not found, please Signup' });
+      return res.status(400).json({ message: "User not found, please Signup" });
     }
     // compares saved password with user input
     const isValidUser = await bcrypt.compare(password, userExists.password);
     // if no match, returns message
     if (!isValidUser) {
-      return res.status(400).json({ message: 'Sorry, wrong password.' });
+      return res.status(400).json({ message: "Sorry, wrong password." });
     }
     // creates user in session
-    req.session.user =  {email, id: userExists._id} ;
+    req.session.user = { email, id: userExists._id };
     // return session user to client
     return res.status(200).json(req.session.user);
   } catch (error) {
@@ -65,7 +65,7 @@ async function login(req, res) {
 async function logout(req, res) {
   try {
     await req.session.destroy();
-    return res.status(200).json({ message: 'logged out' });
+    return res.status(200).json({ message: "logged out" });
   } catch (error) {
     return res.status(500).json(error);
   }
@@ -77,7 +77,7 @@ async function deleteUser(req, res) {
     const userId = req.session.user.id;
     const deletedUser = await User.findByIdAndDelete(userId);
     await req.session.destroy();
-    return res.status(200).json({ message: 'user deleted' });
+    return res.status(200).json({ message: "user deleted" });
   } catch (error) {
     return res.status(500).json(error);
   }
