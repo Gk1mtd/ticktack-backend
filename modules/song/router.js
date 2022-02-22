@@ -7,13 +7,13 @@ const router = require('express').Router();
 function songRouter(app) {
   // combines routes with controller, via express.router
   router
-    .post('/', controller.createSong)
-    .put('/', controller.updateSong)
-    .delete('/', controller.deleteSong)
-    .get("/:songId", controller.getSong)
-    .get("/songsAll", controller.getAllSongs)
+    .post('/song/', controller.createSong)
+    .put('/song/', controller.updateSong)
+    .delete('/setlist/:setlistId/song/:songId', controller.deleteSong)
+    .get("/song/:songId", controller.getSong)
+    .get("/song/songsAll", controller.getAllSongs)
   // sets baseurl for this auth
-  app.use('/api/song', router);
+  app.use('/api', router);
 }
 
 module.exports = songRouter;
