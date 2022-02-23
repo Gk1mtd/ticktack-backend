@@ -11,7 +11,7 @@ function setlistRouter(app) {
     .put('/update-setlist', controller.updateSetlist)
     .get("/getall-setlists", controller.getAllSetlists)
     .get('/get-setlist/:setlistId', controller.getSetlist)
-    .delete("/delete-setlist", controller.deleteSetlist)
+    .delete("/delete-setlist/:setlistId", controller.deleteSetlist)
   // sets baseurl for this auth
   app.use('/api/setlist', router);
 }
