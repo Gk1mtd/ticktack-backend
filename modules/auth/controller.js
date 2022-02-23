@@ -8,7 +8,6 @@ async function signUp(req, res) {
   try {
     // gets user data in req.body
     const { email, password } = req.body;
-    console.log(req.body);
     // checks for missing data
     if (!email || !password) {
       return res
