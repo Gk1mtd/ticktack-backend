@@ -11,7 +11,7 @@ function songRouter(app) {
     .put('/song/', controller.updateSong)
     .delete('/setlist/:setlistId/song/:songId', controller.deleteSong)
     .get("/song/:songId", controller.getSong)
-    .get("/song/songsAll", controller.getAllSongs)
+    .get("/setlist/:setlistId", controller.getAllSongs)
   // sets baseurl for this auth
   app.use('/api', router);
 }
