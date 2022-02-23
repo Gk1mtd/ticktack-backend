@@ -31,9 +31,11 @@ async function getSong(req, res) {
 /** get all Songs */
 async function getAllSongs(req, res) {
   try {
-    const songs = await Song.find();
+    const { setlistId } = req.params;
+    const {songs} = await Setlist.findById(setlistId).populate("songs");
     return res.status(200).json(songs);
   } catch (error) {
+    console.log(error);
     return res.status(500).json({ message: "Cannot get Songs ⚠" });
   }
 }
