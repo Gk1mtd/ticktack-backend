@@ -16,7 +16,7 @@ function sessionConfiguration(app) {
         cookie: {
           maxAge: 1000 * 24 * 60 * 60,
           secure: NODE_ENV === "production",
-          sameSite: true
+          sameSite: "none"
         },
       }
     )
