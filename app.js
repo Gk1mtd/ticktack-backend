@@ -21,9 +21,10 @@ async function start() {
     authRouter(app);
     setlistRouter(app);
     songRouter(app);
-    app.get("/api/logged-in-user", (req, res) => {
-      res.status("200").json({ user: req.session });
-    });
+    // test routing for session check
+    // app.get("/api/logged-in-user", (req, res) => {
+    //   res.status("200").json({ user: req.session });
+    // });
     app.listen(PORT, () => console.log(`Server is running on Port: ${PORT}`));
   } catch (error) {
     console.error(
