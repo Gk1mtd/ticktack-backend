@@ -7,8 +7,8 @@ const router = require('express').Router();
 function songRouter(app) {
   // combines routes with controller, via express.router
   router
-    .post('/song/', controller.createSong)
-    .put('/song/', controller.updateSong)
+    .post('/song', controller.createSong)
+    .put('/song', controller.updateSong)
     .delete('/setlist/:setlistId/song/:songId', controller.deleteSong)
     .get("/song/:songId", controller.getSong)
     .get("/setlist/:setlistId", controller.getAllSongs)

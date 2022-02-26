@@ -20,7 +20,7 @@ async function createSong(req, res) {
 /** retrieves the song of the current setlist and return it */
 async function getSong(req, res) {
   try {
-    const { songId } = req.body;
+    const { songId } = req.params;
     const song = await Song.findById(songId);
     return res.status(200).json(song);
   } catch (error) {
@@ -43,7 +43,8 @@ async function getAllSongs(req, res) {
 /** updates a song */
 async function updateSong(req, res) {
   try {
-    const { songId, name, bpm, note } = req.body;
+    const { name, bpm, note } = req.body.songData;
+    const {songId} = req.body
     await Song.findByIdAndUpdate(songId, { name, bpm, note });
     return res.status(200).json({ message: "Song update was successful ♫♫♫" });
   } catch (error) {
