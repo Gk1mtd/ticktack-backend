@@ -12,7 +12,6 @@ function middlewares(app) {
   app.use(
     cors({
       credentials: true,
-      methods: ["POST", "PUT", "GET", "OPTIONS", "HEAD"],
       origin: ORIGIN,
     })
   );
