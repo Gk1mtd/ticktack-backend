@@ -9,7 +9,13 @@ const { ORIGIN } = process.env;
 function middlewares(app) {
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
-  app.use(cors({ credentials: true, origin: ORIGIN }));
+  app.use(
+    cors({
+      credentials: true,
+      methods: ["POST", "PUT", "GET", "OPTIONS", "HEAD"],
+      origin: ORIGIN,
+    })
+  );
 }
 
 module.exports = middlewares;
