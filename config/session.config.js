@@ -10,12 +10,12 @@ function sessionConfiguration(app) {
     session({
       secret: SESSION_SECRET,
       resave: true,
-      saveUninitialized: false,
+      saveUninitialized: true,
       store: MongoStore.create({
         mongoUrl: MONGO_DB_URL,
       }),
       cookie: {
-        maxAge: 1000 * 60 * 60 * 24 * 365,
+        maxAge: 1000 * 60 * 60 * 24,
         sameSite,
         secure: isProduction,
       },
