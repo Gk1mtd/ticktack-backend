@@ -10,9 +10,7 @@ function middlewares(app) {
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
   app.use(
-    cors({
-      origin: "*",
-    })
+    cors({ origin: ["*", "https://ticktack.herokuapp.com/"] })
   );
 }
 
