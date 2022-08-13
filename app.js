@@ -5,7 +5,7 @@ require("dotenv").config();
 // gets the port from the environment
 const { PORT } = process.env;
 // require all configurations for express server instance to use
-const connectDB = require("./config/db.config");
+const {connectDB} = require("./config/db.config");
 const middlewares = require("./config/middlewares.config");
 const session = require("./config/session.config");
 const authRouter = require("./modules/auth/router");
