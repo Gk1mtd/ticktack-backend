@@ -74,7 +74,7 @@ async function logout(req, res) {
 async function deleteUser(req, res) {
   try {
     const userId = req.session.user.id;
-    const deletedUser = await User.findByIdAndDelete(userId);
+    await User.findByIdAndDelete(userId);
     await req.session.destroy();
     return res.status(200).json({ message: "user deleted" });
   } catch (error) {
