@@ -1,14 +1,16 @@
-// create an instance of express server
-const express = require("express");
-const app = express();
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-
 // makes the environments accessable
 require("dotenv").config();
 
-// gets the port from the environment
-const { PORT } = process.env;
+// create an instance of express server
+const express = require("express");
+const app = express();
+
+// middlewares
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+// middlewares - cors
+const cors = require("cors");
+app.use(cors());
 
 // require all configurations for express server instance to use
 const { connectDB } = require("./config/db.config");
@@ -17,15 +19,13 @@ const authRouter = require("./modules/auth/router");
 const setlistRouter = require("./modules/setlist/router");
 const songRouter = require("./modules/song/router");
 
-// cors
-const cors = require("cors");
-app.use(cors());
+// gets the port from the environment
+const { PORT } = process.env;
 
 // starts the server with all the configurations
 async function start() {
   try {
     connectDB();
-
     session(app);
     authRouter(app);
     setlistRouter(app);
