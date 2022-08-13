@@ -6,6 +6,7 @@ const { ORIGIN } = process.env;
 const cors = require("cors");
 const corsOptions = {
   origin: ORIGIN,
+  "Access-Control-Allow-Credentials": true,
   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
 };
 
