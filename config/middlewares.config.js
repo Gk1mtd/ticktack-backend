@@ -9,9 +9,7 @@ const { ORIGIN } = process.env;
 function middlewares(app) {
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
-  app.use(
-    cors({ origin: ["*", "https://ticktack.herokuapp.com"] })
-  );
+  app.use(cors({ origin: ["*", ORIGIN] }));
 }
 
 module.exports = middlewares;
