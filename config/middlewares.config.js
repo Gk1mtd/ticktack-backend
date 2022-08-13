@@ -12,9 +12,9 @@ const corsOptions = {
 
 // provides additional middleware-configuration for the express instance
 function middlewares(app) {
+  app.use(cors(corsOptions));
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
-  app.use(cors(corsOptions));
 }
 
 module.exports = middlewares;
