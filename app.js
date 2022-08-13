@@ -13,11 +13,6 @@ const setlistRouter = require("./modules/setlist/router");
 const songRouter = require("./modules/song/router");
 
 const cors = require("cors");
-const corsOptions = {
-  origin: "*",
-  "Access-Control-Allow-Credentials": true,
-  optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
-};
 
 // starts the server with all the configurations
 async function start() {
@@ -28,11 +23,7 @@ async function start() {
     authRouter(app);
     setlistRouter(app);
     songRouter(app);
-    app.use(cors(corsOptions));
-    // test routing for session check
-    // app.get("/api/logged-in-user", (req, res) => {
-    //   res.status("200").json({ user: req.session });
-    // });
+    app.use(cors());
     app.listen(PORT, () => console.log(`Server is running on Port: ${PORT}`));
   } catch (error) {
     console.error(
