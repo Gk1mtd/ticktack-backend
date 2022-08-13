@@ -1,17 +1,19 @@
 // imports express to use JSON and urlencoded funtions
 // to parses payloads of requests
 const express = require("express");
-// allows cross origin resource sharing
-const cors = require("cors").config();
 const { ORIGIN } = process.env;
+// allows cross origin resource sharing
+const cors = require("cors");
+const corsOptions = {
+  origin: ORIGIN,
+  optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+};
 
 // provides additional middleware-configuration for the express instance
 function middlewares(app) {
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
-  app.use(
-    cors({ origin: "*", headers: { "Access-Control-Allow-Origin": "*" } })
-  );
+  app.use(cors(corsOptions));
 }
 
 module.exports = middlewares;
