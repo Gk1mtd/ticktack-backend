@@ -9,7 +9,9 @@ const { ORIGIN } = process.env;
 function middlewares(app) {
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
-  app.use(cors({ origin: "*" }));
+  app.use(
+    cors({ origin: "*", headers: { "Access-Control-Allow-Origin": "*" } })
+  );
 }
 
 module.exports = middlewares;
