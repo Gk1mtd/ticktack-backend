@@ -17,7 +17,7 @@ const cors = require("cors");
 // starts the server with all the configurations
 async function start() {
   try {
-    await connectDB();
+    connectDB();
     middlewares(app);
     session(app);
     authRouter(app);
