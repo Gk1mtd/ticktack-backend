@@ -1,5 +1,6 @@
 // create an instance of express server
-const app = require("express")();
+const express = require("express");
+const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
