@@ -2,7 +2,7 @@
 // to parses payloads of requests
 const express = require("express");
 // allows cross origin resource sharing
-const cors = require("cors");
+const cors = require("cors").config();
 const { ORIGIN } = process.env;
 
 // provides additional middleware-configuration for the express instance
