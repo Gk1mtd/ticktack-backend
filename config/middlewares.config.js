@@ -5,7 +5,7 @@ const { ORIGIN } = process.env;
 // allows cross origin resource sharing
 const cors = require("cors");
 const corsOptions = {
-  origin: ORIGIN,
+  origin: ["*", ORIGIN, "https://ticktack-server.herokuapp.com/api/login"],
   "Access-Control-Allow-Credentials": true,
   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
 };
