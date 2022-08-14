@@ -10,7 +10,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 // middlewares - cors
 const cors = require("cors");
-app.use(cors());
+const origin = process.env.ORIGIN;
+app.use(
+  cors({
+    origin: origin,
+    credentials: true,
+  })
+);
 
 // require all configurations for express server instance to use
 const { connectDB } = require("./config/db.config");
