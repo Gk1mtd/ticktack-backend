@@ -10,7 +10,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 // middlewares - cors
 const cors = require("cors");
-console.log(origin);
 app.use(
   cors({
     origin: origin,
