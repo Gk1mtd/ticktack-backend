@@ -13,7 +13,7 @@ const cors = require("cors");
 const origin = process.env.ORIGIN;
 app.use(
   cors({
-    origin: "*",
+    origin: origin,
     credentials: true,
   })
 );
