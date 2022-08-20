@@ -40,6 +40,7 @@ async function getAllSetlists(req, res) {
     const user = await User.findById(userId).populate("setlists");
     return res.status(200).json(user.setlists);
   } catch (error) {
+    console.log("ERROR!!!!!: ", error);
     return res
       .status(500)
       .json({ message: "couldn't retrieve data, sorry :/" });
