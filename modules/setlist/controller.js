@@ -37,7 +37,7 @@ async function getSetlist(req, res) {
 async function getAllSetlists(req, res) {
   try {
     // const userId = req.session.user.id;
-    const userEmail = req.params;
+    const userEmail = req.params.userEmail;
     console.log("userEmail: ", userEmail);
     const user = await User.findOne({ email: userEmail }).populate("setlists");
     return res.status(200).json(user.setlists);
