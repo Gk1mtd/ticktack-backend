@@ -9,7 +9,7 @@ function setlistRouter(app) {
   router
     .post('/create-setlist', controller.createSetlist)
     .put('/update-setlist', controller.updateSetlist)
-    .get("/getall-setlists", controller.getAllSetlists)
+    .get("/getall-setlists/:userEmail", controller.getAllSetlists)
     .get('/get-setlist/:setlistId', controller.getSetlist)
     .delete("/delete-setlist/:setlistId", controller.deleteSetlist)
   // sets baseurl for this auth

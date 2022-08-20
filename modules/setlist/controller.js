@@ -36,9 +36,10 @@ async function getSetlist(req, res) {
 /** retrieves the setlists of the current user and return it */
 async function getAllSetlists(req, res) {
   try {
-    const userId = req.session.user.id;
-    console.log("USERID: ", userId);
-    const user = await User.findById(userId).populate("setlists");
+    // const userId = req.session.user.id;
+    const userEmail = req.params;
+    console.log("userEmail: ", userEmail);
+    const user = await User.findById(userEmail).populate("setlists");
     return res.status(200).json(user.setlists);
   } catch (error) {
     console.log("ERROR!!!!!: ", error);
