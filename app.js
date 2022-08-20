@@ -11,7 +11,11 @@ app.use(express.urlencoded({ extended: true }));
 // middlewares - cors
 const cors = require("cors");
 // const origin = process.env.ORIGIN;
-const origin = ["*", process.env.ORIGIN, `${process.env.ORIGIN}/setlists`];
+const origin = [
+  "*",
+  process.env.ORIGIN,
+  `${process.env.ORIGIN}/api/setlist/getall-setlists`,
+];
 app.use(
   cors({
     origin: origin,
