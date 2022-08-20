@@ -37,6 +37,7 @@ async function getSetlist(req, res) {
 async function getAllSetlists(req, res) {
   try {
     const userId = req.session.user.id;
+    console.log("USERID: ", userId);
     const user = await User.findById(userId).populate("setlists");
     return res.status(200).json(user.setlists);
   } catch (error) {
@@ -64,13 +65,13 @@ async function deleteSetlist(req, res) {
     const { setlistId } = req.params;
     /** delete all songs from setlist */
     // get setlist
-    const setlist = await Setlist.findById(setlistId)
+    const setlist = await Setlist.findById(setlistId);
     // get song ids [of IDs]
-    const songs = [...setlist.songs]
+    const songs = [...setlist.songs];
     // delete songs
     songs.map(async (song) => {
-      await Song.findByIdAndDelete(song._id)
-    })
+      await Song.findByIdAndDelete(song._id);
+    });
     /** delete setlist itself */
     await Setlist.findByIdAndDelete(setlistId);
     return res.status(200).json({ message: "deleted successfully" });
