@@ -15,7 +15,7 @@ const origin = [
   "*",
   process.env.ORIGIN,
   `${process.env.ORIGIN}/api/setlist/getall-setlists`,
-  "https://clickbeat.netlify.app/",
+  "https://clickbeat.netlify.app/", "https://clickbeat.netlify.app/login"
 ];
 app.use(
   cors({
