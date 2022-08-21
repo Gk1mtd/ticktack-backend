@@ -12,10 +12,10 @@ app.use(express.urlencoded({ extended: true }));
 const cors = require("cors");
 // const origin = process.env.ORIGIN;
 const origin = [
-  "*",
   process.env.ORIGIN,
   `${process.env.ORIGIN}/api/setlist/getall-setlists`,
-  "https://clickbeat.netlify.app/", "https://clickbeat.netlify.app/login"
+  "https://clickbeat.netlify.app/",
+  "https://clickbeat.netlify.app/login",
 ];
 app.use(
   cors({
