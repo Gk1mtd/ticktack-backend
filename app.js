@@ -15,7 +15,7 @@ const origin = process.env.ORIGIN;
 app.use(
   cors({
     // origin: origin,
-    origin: "https://clickbeat.netlify.app",
+    origin: origin,
     credentials: true,
     methods: ["GET", "PUT", "POST", "DELETE"],
   })
