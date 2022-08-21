@@ -11,7 +11,13 @@ app.use(express.urlencoded({ extended: true }));
 // middlewares - cors
 const cors = require("cors");
 // const origin = process.env.ORIGIN;
-const origin = [process.env.ORIGIN, "https://clickbeat.netlify.app"];
+const origin = [
+  process.env.ORIGIN,
+  `${process.env.ORIGIN}/api/setlist/getall-setlists`,
+  `${process.env.ORIGIN}/api/login`,
+  "https://clickbeat.netlify.app/",
+  "https://clickbeat.netlify.app/login",
+];
 app.use(
   cors({
     origin: origin,
